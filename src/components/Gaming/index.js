@@ -2,9 +2,7 @@ import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
 
-import {HiFire} from 'react-icons/hi'
-
-import {formatDistanceToNow} from 'date-fns'
+import {SiYoutubegaming} from 'react-icons/si'
 
 import Cookies from 'js-cookie'
 
@@ -16,26 +14,18 @@ import {
   RetryButton,
   VideoItem,
   VideoImg,
-  VideoItemDetailsContainer,
   VideoTitle,
-  ChannelNameLg,
-  ChannelViewsLg,
-  ChannelNameSm,
-  PublishedDuration,
-  VideoItemDetailsSm,
-  ViewsDurationContainerLg,
-  ChannelImg,
-  VideoItemDetails,
   TrendingContainer,
   TrendingBanner,
   TrendingHeading,
   TrendingList,
   TrendingButton,
+  GamingViews,
 } from './styledComponents'
 
 import ThemeContext from '../context/ThemeContext'
 
-class Trending extends Component {
+class Gaming extends Component {
   state = {videosList: [], isLoading: ''}
 
   componentDidMount() {
@@ -54,10 +44,7 @@ class Trending extends Component {
       },
     }
 
-    const response = await fetch(
-      `https://apis.ccbp.in/videos/trending`,
-      options,
-    )
+    const response = await fetch(`https://apis.ccbp.in/videos/gaming`, options)
     const data = await response.json()
 
     if (response.ok) {
@@ -67,12 +54,7 @@ class Trending extends Component {
         id: each.id,
         title: each.title,
         thumbnailUrl: each.thumbnail_url,
-        channel: {
-          name: each.channel.name,
-          profileImageUrl: each.channel.profile_image_url,
-        },
         viewCount: each.view_count,
-        publishedAt: formatDistanceToNow(new Date(each.published_at)),
       }))
 
       this.setState({
@@ -132,43 +114,18 @@ class Trending extends Component {
             <TrendingContainer theme={isDark}>
               <TrendingBanner theme={isDark}>
                 <TrendingButton theme={isDark} type="button">
-                  <HiFire color="#ff0000" size="25" />
+                  <SiYoutubegaming color="#ff0000" size="25" />
                 </TrendingButton>
-                <TrendingHeading theme={isDark}>Trending</TrendingHeading>
+                <TrendingHeading theme={isDark}>Gaming</TrendingHeading>
               </TrendingBanner>
               <TrendingList>
                 {videosList.videos.map(each => (
                   <VideoItem key={each.id}>
                     <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
-                    <VideoItemDetails>
-                      <ChannelImg
-                        src={each.channel.profileImageUrl}
-                        alt="channel logo"
-                      />
-                      <VideoItemDetailsContainer>
-                        <VideoTitle theme={isDark}>{each.title}</VideoTitle>
-                        <ChannelNameLg>{each.channel.name}</ChannelNameLg>
-                        <ViewsDurationContainerLg>
-                          <ChannelViewsLg>
-                            {each.viewCount} views
-                          </ChannelViewsLg>
-                          <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
-                          </PublishedDuration>
-                        </ViewsDurationContainerLg>
-                        <VideoItemDetailsSm>
-                          <ChannelNameSm>{each.channel.name}</ChannelNameSm>
-                          <PublishedDuration>
-                            {each.viewCount} views
-                          </PublishedDuration>
-                          <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
-                          </PublishedDuration>
-                        </VideoItemDetailsSm>
-                      </VideoItemDetailsContainer>
-                    </VideoItemDetails>
+                    <VideoTitle theme={isDark}>{each.title}</VideoTitle>
+                    <GamingViews>
+                      {each.viewCount} Watching Worldwide
+                    </GamingViews>
                   </VideoItem>
                 ))}
               </TrendingList>
@@ -199,4 +156,4 @@ class Trending extends Component {
   }
 }
 
-export default Trending
+export default Gaming

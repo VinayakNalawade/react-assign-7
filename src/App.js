@@ -8,7 +8,9 @@ import Home from './components/Home'
 
 import Trending from './components/Trending'
 
+import Gaming from './components/Gaming'
+
 // Replace your code here
-const App = () => <Trending />
+const App = () => <Gaming />
 
 export default App

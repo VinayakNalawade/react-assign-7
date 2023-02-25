@@ -36,7 +36,7 @@ export const SearchButton = styled.button`
   outline: none;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  padding: 4px;
+  padding: 7px;
   padding-left: 12px;
   padding-right: 12px;
   border: none;
@@ -87,7 +87,7 @@ export const HomeVideosList = styled.ul`
   flex-wrap: wrap;
 `
 
-export const VideoItem = styled.li`
+export const VideoItem = styled.div`
   list-style-type: none;
   width: 100vw;
 
@@ -105,11 +105,18 @@ export const ChannelImg = styled.img`
 
 export const VideoItemDetailsContainer = styled.div``
 
+export const VideoItemDetailsLg = styled.div`
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+
 export const VideoTitle = styled.h1`
   font-weight: 600;
   font-size: 18px;
   margin-top: 0;
   padding-top: 0;
+  color: ${props => (props.theme === true ? '#ffffff' : '#000000')};
 
   @media screen and (min-width: 768px) {
     font-size: 15px;
