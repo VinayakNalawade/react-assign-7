@@ -6,6 +6,8 @@ import Loader from 'react-loader-spinner'
 
 import {BsSearch} from 'react-icons/bs'
 
+import {formatDistanceToNow} from 'date-fns'
+
 import {
   HomeContainer,
   SearchInputContainer,
@@ -26,6 +28,8 @@ import {
   VideoItemDetailsSm,
   ViewsDurationContainerLg,
   VideoItemDetails,
+  ChannelNameSm,
+  ChannelViewsLg,
   VideoImg,
 } from './styledComponents'
 
@@ -70,7 +74,7 @@ class Home extends Component {
           profileImageUrl: each.channel.profile_image_url,
         },
         viewCount: each.view_count,
-        publishedAt: each.published_at,
+        publishedAt: formatDistanceToNow(new Date(each.published_at)),
       }))
 
       this.setState({
@@ -165,13 +169,19 @@ class Home extends Component {
                 <VideoTitle>{each.title}</VideoTitle>
                 <ChannelNameLg>{each.channel.name}</ChannelNameLg>
                 <ViewsDurationContainerLg>
-                  <ChannelNameLg>{each.viewCount} views</ChannelNameLg>
-                  <PublishedDuration>{each.publishedAt}</PublishedDuration>
+                  <ChannelViewsLg>{each.viewCount} views</ChannelViewsLg>
+                  <PublishedDuration>
+                    {each.publishedAt.slice(0, 1).toUpperCase()}
+                    {each.publishedAt.slice(1)}
+                  </PublishedDuration>
                 </ViewsDurationContainerLg>
                 <VideoItemDetailsSm>
-                  <ChannelNameLg>{each.channel.name}</ChannelNameLg>
+                  <ChannelNameSm>{each.channel.name}</ChannelNameSm>
                   <PublishedDuration>{each.viewCount} views</PublishedDuration>
-                  <PublishedDuration>{each.publishedAt}</PublishedDuration>
+                  <PublishedDuration>
+                    {each.publishedAt.slice(0, 1).toUpperCase()}
+                    {each.publishedAt.slice(1)}
+                  </PublishedDuration>
                 </VideoItemDetailsSm>
               </VideoItemDetailsContainer>
             </VideoItemDetails>

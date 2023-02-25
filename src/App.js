@@ -6,7 +6,9 @@ import Header from './components/Header'
 
 import Home from './components/Home'
 
+import Trending from './components/Trending'
+
 // Replace your code here
-const App = () => <Home />
+const App = () => <Trending />
 
 export default App

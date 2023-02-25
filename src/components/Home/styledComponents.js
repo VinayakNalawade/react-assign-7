@@ -48,22 +48,40 @@ export const HomeFailureContainer = styled.div`
   background-color: ${props => (props.theme === true ? '#212121' : '#f1f1f1')};
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5%;
 `
 
 export const FailureImg = styled.img`
   width: 60%;
 `
 
-export const FailureHeading = styled.h1``
+export const FailureHeading = styled.h1`
+  font-size: 24px;
+  color: ${props => (props.theme === true ? '#ffffff' : '#000000')};
+`
 
-export const FailureMsg = styled.p``
+export const FailureMsg = styled.p`
+  font-size: 15px;
+  color: #616e7c;
+`
 
-export const RetryButton = styled.button``
+export const RetryButton = styled.button`
+  color: #ffffff;
+  background-color: #4f46e5;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  width: 100px;
+  border-radius: 8px;
+  margin-top: 30px;
+`
 
 export const HomeVideosList = styled.ul`
   padding: 0;
   display: flex;
-  align-items: center;
   margin-top: 15px;
   margin-bottom: 15px;
   flex-wrap: wrap;
@@ -80,7 +98,7 @@ export const VideoItem = styled.li`
 `
 
 export const ChannelImg = styled.img`
-  width: 60px;
+  width: 40px;
   align-self: flex-start;
   margin-right: 12px;
 `
@@ -92,17 +110,66 @@ export const VideoTitle = styled.h1`
   font-size: 18px;
   margin-top: 0;
   padding-top: 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+  }
 `
 
 export const ChannelNameLg = styled.p`
-  font-size: 15px;
+  font-size: 12px;
+  margin-right: 15px;
+  font-weight: 600;
+  color: #64748b;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `
 
-export const PublishedDuration = styled.p``
+export const ChannelViewsLg = styled.li`
+  list-style-type: none;
+  margin-right: 25px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+`
 
-export const VideoItemDetailsSm = styled.ul``
+export const ChannelNameSm = styled.li`
+  font-size: 12px;
+  font-weight: 600;
+  list-style-type: none;
+  margin-right: 25px;
+  color: #64748b;
+`
 
-export const ViewsDurationContainerLg = styled.div``
+export const PublishedDuration = styled.li`
+  list-style-type: disc;
+  margin-right: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+`
+
+export const VideoItemDetailsSm = styled.ul`
+  padding: 0;
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+
+export const ViewsDurationContainerLg = styled.div`
+  display: flex;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
 
 export const VideoImg = styled.img`
   width: 100%;
