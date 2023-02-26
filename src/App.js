@@ -10,7 +10,9 @@ import Trending from './components/Trending'
 
 import Gaming from './components/Gaming'
 
+import VideoItemDetails from './components/VideoItemDetails'
+
 // Replace your code here
-const App = () => <Gaming />
+const App = () => <VideoItemDetails />
 
 export default App
