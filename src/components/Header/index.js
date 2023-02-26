@@ -77,7 +77,7 @@ const Header = () => (
                     <MenuList>
                       <MenuItem>
                         <AiFillHome color="#ff0000" size="20" />
-                        <MenuItemHeading>Home</MenuItemHeading>
+                        <MenuItemHeading theme={isDark}>Home</MenuItemHeading>
                       </MenuItem>
                       <MenuItem>
                         <HiFire color="#606060" size="20" />

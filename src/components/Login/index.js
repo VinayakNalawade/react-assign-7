@@ -23,7 +23,7 @@ class Login extends Component {
 
     const {history} = this.props
     if (jwtToken) {
-      // history.replace('/')
+      history.replace('/')
     }
   }
 

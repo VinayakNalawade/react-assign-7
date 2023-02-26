@@ -107,9 +107,9 @@ class VideoItemDetails extends Component {
 
         const {videoDetails} = this.state
         const {id} = videoDetails
-        const isLiked = liked.includes(id)
-        const isDisliked = disliked.includes(id)
-        const isSaved = saved.includes(id)
+        const isLiked = liked.some(each => each.id === id)
+        const isDisliked = disliked.some(each => each.id === id)
+        const isSaved = saved.some(each => each.id === id)
 
         return (
           <LikeDislikeSave>
@@ -120,14 +120,14 @@ class VideoItemDetails extends Component {
               </LikeLabel>
             </Like>
             <Like>
-              <BiDislike color={isLiked ? '#3b82f6' : '#64748b'} />
-              <LikeLabel color={isLiked ? '#3b82f6' : '#64748b'}>
+              <BiDislike color={isDisliked ? '#3b82f6' : '#64748b'} />
+              <LikeLabel color={isDisliked ? '#3b82f6' : '#64748b'}>
                 Dislike
               </LikeLabel>
             </Like>
             <Like>
-              <BiListPlus color={isLiked ? '#3b82f6' : '#64748b'} />
-              <LikeLabel color={isLiked ? '#3b82f6' : '#64748b'}>
+              <BiListPlus color={isSaved ? '#3b82f6' : '#64748b'} />
+              <LikeLabel color={isSaved ? '#3b82f6' : '#64748b'}>
                 {isSaved ? 'Saved' : 'Save'}
               </LikeLabel>
             </Like>

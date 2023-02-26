@@ -38,6 +38,8 @@ export const RetryButton = styled.button`
 `
 
 export const VideoItem = styled.div`
+  background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
+  flex-grow: 1;
   padding-top: 2%;
   @media screen and (min-width: 768px) {
     padding-top: 0;

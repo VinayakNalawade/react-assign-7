@@ -98,9 +98,9 @@ export const VideoItem = styled.div`
 `
 
 export const ChannelImg = styled.img`
-  width: 40px;
+  width: 30px;
   align-self: flex-start;
-  margin-right: 12px;
+  margin-right: 8px;
 `
 
 export const VideoItemDetailsContainer = styled.div``
@@ -113,7 +113,7 @@ export const VideoItemDetailsLg = styled.div`
 
 export const VideoTitle = styled.h1`
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 0;
   padding-top: 0;
   color: ${props => (props.theme === true ? '#ffffff' : '#000000')};

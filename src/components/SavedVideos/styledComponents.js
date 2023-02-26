@@ -25,17 +25,6 @@ export const FailureMsg = styled.p`
   color: #616e7c;
 `
 
-export const RetryButton = styled.button`
-  color: #ffffff;
-  background-color: #4f46e5;
-  outline: none;
-  border: none;
-  padding: 10px;
-  font-size: 17px;
-  width: 100px;
-  border-radius: 8px;
-  margin-top: 30px;
-`
 export const TrendingContainer = styled.div`
   background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
   flex-grow: 1;
