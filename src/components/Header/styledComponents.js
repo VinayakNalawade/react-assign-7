@@ -1,4 +1,23 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
+
+export const ReactLink = styled(Link)`
+  text-decoration: none;
+  background-color: ${props => props.bgColor};
+  width: 100vw;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+`
+
+export const ReactLogoLink = styled(Link)`
+  text-decoration: none;
+  background-color: ${props => props.bgColor};
+  border: none;
+  outline: none;
+`
 
 export const Navbar = styled.nav`
   display: flex;

@@ -108,7 +108,6 @@ const SavedVideos = () => {
     <VideoDetailsContext.Consumer>
       {value => {
         const {saved} = value
-        console.log(saved)
 
         if (saved.length !== 0) {
           return renderSuccess(saved)

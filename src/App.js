@@ -24,28 +24,40 @@ import NotFound from './components/NotFound'
 
 import Sidebar from './components/Sidebar'
 
+import Banner from './components/Banner'
+
 class App extends Component {
-  state = {isDark: ''}
+  state = {isDark: '', showBanner: ''}
 
   componentDidMount() {
-    this.setState({isDark: false})
+    this.setState({isDark: false, showBanner: true})
   }
 
+  changeShowBanner = () => this.setState({showBanner: false})
+
   render() {
+    const {showBanner} = this.state
     return (
       <div className="main-container">
         <Header />
         <div className="sub-container">
           <Sidebar />
-          <Switch>
-            <Route path="/login" component={Login} />
-            <ProtectedRoute path="/" component={Home} />
-            <ProtectedRoute path="/trending" component={Trending} />
-            <ProtectedRoute path="/gaming" component={Gaming} />
-            <ProtectedRoute path="/videos/:id" component={VideoItemDetails} />
-            <Route path="/savedvideos" component={SavedVideos} />
-            <Route component={NotFound} />
-          </Switch>
+          <div className="banner-content-container">
+            {showBanner && <Banner changeShowBanner={this.changeShowBanner} />}
+            <Switch>
+              <Route path="/login" component={Login} />
+              <ProtectedRoute exact path="/" component={Home} />
+              <ProtectedRoute exact path="/trending" component={Trending} />
+              <ProtectedRoute exact path="/gaming" component={Gaming} />
+              <ProtectedRoute
+                exact
+                path="/videos/:id"
+                component={VideoItemDetails}
+              />
+              <Route path="/savedvideos" component={SavedVideos} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
         </div>
       </div>
     )

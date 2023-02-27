@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
 
 export const MenuList = styled.ul`
@@ -7,7 +9,6 @@ export const MenuList = styled.ul`
   background-color: ${props => (props.theme === true ? '#212121' : '#ffffff')};
   padding: 0;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,15 +16,20 @@ export const MenuList = styled.ul`
   min-width: 180px;
 `
 export const MenuItem = styled.li`
+  background-color: ${props => props.bgColor};
   list-style-type: none;
   display: flex;
   align-items: center;
   width: 100%;
-  margin-left: 4%;
+  padding-left: 4%;
 `
 
 export const MenuItemHeading = styled.h1`
   font-size: 17px;
   margin-left: 15px;
   color: ${props => (props.theme !== true ? '#424242' : '#ffffff')};
+`
+export const ReactLink = styled(Link)`
+  text-decoration: none;
+  width: 100%;
 `

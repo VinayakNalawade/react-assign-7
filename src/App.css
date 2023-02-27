@@ -21,3 +21,9 @@ body {
   display: flex;
   flex-grow: 1;
 }
+
+.banner-content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
