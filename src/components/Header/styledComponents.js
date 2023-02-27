@@ -112,3 +112,30 @@ export const MenuItemHeading = styled.h1`
   margin-left: 15px;
   color: ${props => (props.theme !== true ? '#424242' : '#ffffff')};
 `
+export const LogoutModal = styled.div`
+  background-color: ${props => (props.theme === true ? '#212121' : '#ffffff')};
+  padding: 5%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+export const LogoutButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const CancelButton = styled.button`
+  background-color: ${props => props.bgColor};
+  font-size: 17px;
+  color: ${props => props.color};
+  border: 1px solid #64748b;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+`
+export const LogoutModalHeading = styled(MenuItemHeading)`
+  font-sie: 180x;
+  text-alin: center;
+`

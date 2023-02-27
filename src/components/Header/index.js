@@ -1,5 +1,6 @@
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import Popup from 'reactjs-popup'
+import Cookies from 'js-cookie'
 
 import {BsBrightnessHigh} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
@@ -27,6 +28,10 @@ import {
   MenuItem,
   MenuItemHeading,
   ReactLogoLink,
+  CancelButton,
+  LogoutButtonsContainer,
+  LogoutModal,
+  LogoutModalHeading,
 } from './styledComponents'
 
 const Header = props => (
@@ -34,7 +39,12 @@ const Header = props => (
     {value => {
       const {isDark, changeTheme} = value
 
-      const logout = () => {}
+      const logout = () => {
+        Cookies.remove('jwt_token')
+        const {history} = props
+
+        history.replace('/')
+      }
 
       const {location} = props
       const {pathname} = location
@@ -52,7 +62,7 @@ const Header = props => (
             />
           </ReactLogoLink>
           <NavbarIcons>
-            <NavItem>
+            <NavItem onClick={changeTheme}>
               {isDark === true ? (
                 <BsBrightnessHigh
                   size="20"
@@ -149,17 +159,48 @@ const Header = props => (
             </NavItem>
 
             <NavItem>
-              <LogoutIconButton onClick={logout} type="button">
-                <FiLogOut
-                  size="20"
-                  color={isDark === true ? '#ffffff' : '#000000'}
-                />
-              </LogoutIconButton>
+              <Popup
+                modal
+                trigger={
+                  <LogoutIconButton type="button">
+                    <FiLogOut
+                      size="20"
+                      color={isDark === true ? '#ffffff' : '#000000'}
+                    />
+                  </LogoutIconButton>
+                }
+              >
+                {close => (
+                  <LogoutModal theme={isDark}>
+                    <LogoutModalHeading theme={isDark}>
+                      Are you sure you want to logout?
+                    </LogoutModalHeading>
+                    <LogoutButtonsContainer>
+                      <CancelButton
+                        color="#64748b"
+                        bgColor="transparent"
+                        type="button"
+                        onClick={close}
+                      >
+                        Cancel
+                      </CancelButton>
+                      <CancelButton
+                        color="#f1f1f1"
+                        bgColor="#3b82f6"
+                        type="button"
+                        onClick={logout}
+                      >
+                        Confirm
+                      </CancelButton>
+                    </LogoutButtonsContainer>
+                  </LogoutModal>
+                )}
+              </Popup>
             </NavItem>
           </NavbarIcons>
 
           <NavbarTabs>
-            <NavItem>
+            <NavItem onClick={changeTheme}>
               {isDark === true ? (
                 <BsBrightnessHigh
                   color={isDark === true ? '#ffffff' : '#000000'}
