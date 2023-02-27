@@ -23,34 +23,64 @@ const Sidebar = props => (
       return (
         <MenuList theme={isDark}>
           <ReactLink to="/">
-            <MenuItem bgColor={pathname === '/' ? '#f1f1f1' : 'transparent'}>
-              <AiFillHome color="#ff0000" size="20" />
+            <MenuItem
+              bgColor={
+                pathname === '/'
+                  ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                  : 'transparent'
+              }
+            >
+              <AiFillHome
+                color={pathname === '/' ? '#ff0000' : '#606060'}
+                size="20"
+              />
               <MenuItemHeading theme={isDark}>Home</MenuItemHeading>
             </MenuItem>
           </ReactLink>
           <ReactLink to="/trending">
             <MenuItem
-              bgColor={pathname === '/trending' ? '#f1f1f1' : 'transparent'}
+              bgColor={
+                pathname === '/trending'
+                  ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                  : 'transparent'
+              }
             >
-              <HiFire color="#606060" size="20" />
+              <HiFire
+                color={pathname === '/trending' ? '#ff0000' : '#606060'}
+                size="20"
+              />
               <MenuItemHeading theme={isDark}>Trending</MenuItemHeading>
             </MenuItem>
           </ReactLink>
 
           <ReactLink to="/gaming">
             <MenuItem
-              bgColor={pathname === '/gaming' ? '#f1f1f1' : 'transparent'}
+              bgColor={
+                pathname === '/gaming'
+                  ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                  : 'transparent'
+              }
             >
-              <SiYoutubegaming color="#606060" size="20" />
+              <SiYoutubegaming
+                color={pathname === '/gaming' ? '#ff0000' : '#606060'}
+                size="20"
+              />
               <MenuItemHeading theme={isDark}>Gaming</MenuItemHeading>
             </MenuItem>
           </ReactLink>
 
           <ReactLink to="/savedvideos">
             <MenuItem
-              bgColor={pathname === '/savedvideos' ? '#f1f1f1' : 'transparent'}
+              bgColor={
+                pathname === '/savedvideos'
+                  ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                  : 'transparent'
+              }
             >
-              <BiListPlus color="#606060" size="20" />
+              <BiListPlus
+                color={pathname === '/savedvideos' ? '#ff0000' : '#606060'}
+                size="20"
+              />
               <MenuItemHeading theme={isDark}>Saved Videos</MenuItemHeading>
             </MenuItem>
           </ReactLink>

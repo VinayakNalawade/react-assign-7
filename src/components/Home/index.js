@@ -8,7 +8,15 @@ import {BsSearch} from 'react-icons/bs'
 
 import {formatDistanceToNow} from 'date-fns'
 
+import Header from '../Header'
+import Banner from '../Banner'
+import Sidebar from '../Sidebar'
+
 import {
+  ReactLink,
+  MainContainer,
+  SubContainer,
+  BannerContentContainer,
   HomeContainer,
   SearchInputContainer,
   SearchInput,
@@ -156,40 +164,42 @@ class Home extends Component {
           return (
             <HomeVideosList>
               {videosList.videos.map(each => (
-                <VideoItem key={each.id}>
-                  <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
-                  <VideoItemDetails>
-                    <ChannelImg
-                      src={each.channel.profileImageUrl}
-                      alt="channel logo"
-                    />
-                    <VideoItemDetailsContainer>
-                      <VideoTitle theme={isDark}>{each.title}</VideoTitle>
-                      <VideoItemDetailsLg>
-                        <ChannelNameLg>{each.channel.name}</ChannelNameLg>
-                        <ViewsDurationContainerLg>
-                          <ChannelViewsLg>
+                <ReactLink to={`videos/${each.id}`} key={each.id}>
+                  <VideoItem>
+                    <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
+                    <VideoItemDetails>
+                      <ChannelImg
+                        src={each.channel.profileImageUrl}
+                        alt="channel logo"
+                      />
+                      <VideoItemDetailsContainer>
+                        <VideoTitle theme={isDark}>{each.title}</VideoTitle>
+                        <VideoItemDetailsLg>
+                          <ChannelNameLg>{each.channel.name}</ChannelNameLg>
+                          <ViewsDurationContainerLg>
+                            <ChannelViewsLg>
+                              {each.viewCount} views
+                            </ChannelViewsLg>
+                            <PublishedDuration>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDuration>
+                          </ViewsDurationContainerLg>
+                        </VideoItemDetailsLg>
+                        <VideoItemDetailsSm>
+                          <ChannelNameSm>{each.channel.name}</ChannelNameSm>
+                          <PublishedDuration>
                             {each.viewCount} views
-                          </ChannelViewsLg>
+                          </PublishedDuration>
                           <PublishedDuration>
                             {each.publishedAt.slice(0, 1).toUpperCase()}
                             {each.publishedAt.slice(1)}
                           </PublishedDuration>
-                        </ViewsDurationContainerLg>
-                      </VideoItemDetailsLg>
-                      <VideoItemDetailsSm>
-                        <ChannelNameSm>{each.channel.name}</ChannelNameSm>
-                        <PublishedDuration>
-                          {each.viewCount} views
-                        </PublishedDuration>
-                        <PublishedDuration>
-                          {each.publishedAt.slice(0, 1).toUpperCase()}
-                          {each.publishedAt.slice(1)}
-                        </PublishedDuration>
-                      </VideoItemDetailsSm>
-                    </VideoItemDetailsContainer>
-                  </VideoItemDetails>
-                </VideoItem>
+                        </VideoItemDetailsSm>
+                      </VideoItemDetailsContainer>
+                    </VideoItemDetails>
+                  </VideoItem>
+                </ReactLink>
               ))}
             </HomeVideosList>
           )
@@ -218,28 +228,37 @@ class Home extends Component {
     return (
       <ThemeContext.Consumer>
         {value => {
-          const {isDark} = value
+          const {isDark, showBanner, changeShowBanner} = value
 
           return (
-            <HomeContainer theme={isDark}>
-              <SearchInputContainer>
-                <SearchInput
-                  theme={isDark}
-                  onChange={this.changeSearch}
-                  value={search}
-                  type="search"
-                  placeholder="Search"
-                />
-                <SearchButton
-                  theme={isDark}
-                  type="button"
-                  onClick={this.getData}
-                >
-                  <BsSearch size="14" color="#606060" />
-                </SearchButton>
-              </SearchInputContainer>
-              {this.renderPage()}
-            </HomeContainer>
+            <MainContainer>
+              <Header />
+              <SubContainer>
+                <Sidebar />
+                <BannerContentContainer>
+                  {showBanner && <Banner changeShowBanner={changeShowBanner} />}
+                  <HomeContainer theme={isDark}>
+                    <SearchInputContainer>
+                      <SearchInput
+                        theme={isDark}
+                        onChange={this.changeSearch}
+                        value={search}
+                        type="search"
+                        placeholder="Search"
+                      />
+                      <SearchButton
+                        theme={isDark}
+                        type="button"
+                        onClick={this.getData}
+                      >
+                        <BsSearch size="14" color="#606060" />
+                      </SearchButton>
+                    </SearchInputContainer>
+                    {this.renderPage()}
+                  </HomeContainer>
+                </BannerContentContainer>
+              </SubContainer>
+            </MainContainer>
           )
         }}
       </ThemeContext.Consumer>

@@ -1,4 +1,33 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
+
+export const ReactLink = styled(Link)`
+  text-decoration: none;
+  background-color: ${props => props.bgColor};
+  border: none;
+  outline: none;
+  width: 100%;
+  @media screen and (min-width: 576px) {
+    width: 85%;
+  }
+`
+export const MainContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+export const SubContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
+export const BannerContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
 
 export const HomeContainer = styled.div`
   background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};

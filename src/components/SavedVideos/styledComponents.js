@@ -1,4 +1,34 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
+
+export const ReactLink = styled(Link)`
+  text-decoration: none;
+  background-color: ${props => props.bgColor};
+  border: none;
+  outline: none;
+  width: 100%;
+  @media screen and (min-width: 576px) {
+    width: 85%;
+  }
+`
+
+export const MainContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+export const SubContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
+export const BannerContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
 
 export const HomeFailureContainer = styled.div`
   min-height: 100%;
@@ -66,7 +96,6 @@ export const VideoItem = styled.div`
   margin-top: 2%;
   @media screen and (min-width: 576px) {
     display: flex;
-    width: 85%;
   }
 `
 

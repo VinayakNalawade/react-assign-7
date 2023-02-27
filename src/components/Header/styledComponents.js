@@ -2,6 +2,10 @@ import {Link} from 'react-router-dom'
 
 import styled from 'styled-components'
 
+export const ProfileImg = styled.img`
+  width: 27px;
+`
+
 export const ReactLink = styled(Link)`
   text-decoration: none;
   background-color: ${props => props.bgColor};
@@ -119,6 +123,7 @@ export const LogoutModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5px;
 `
 export const LogoutButtonsContainer = styled.div`
   display: flex;
@@ -136,6 +141,6 @@ export const CancelButton = styled.button`
   padding-right: 12px;
 `
 export const LogoutModalHeading = styled(MenuItemHeading)`
-  font-sie: 180x;
-  text-alin: center;
+  font-size: 18px;
+  text-align: center;
 `

@@ -13,7 +13,14 @@ import {formatDistanceToNow} from 'date-fns'
 import ThemeContext from '../context/ThemeContext'
 import VideoDetailsContext from '../context/VideoDetailsContext'
 
+import Header from '../Header'
+import Banner from '../Banner'
+import Sidebar from '../Sidebar'
+
 import {
+  MainContainer,
+  SubContainer,
+  BannerContentContainer,
   HomeFailureContainer,
   FailureImg,
   FailureHeading,
@@ -239,7 +246,26 @@ class VideoItemDetails extends Component {
   }
 
   render() {
-    return this.renderPage()
+    return (
+      <ThemeContext.Consumer>
+        {value => {
+          const {showBanner, changeShowBanner} = value
+
+          return (
+            <MainContainer>
+              <Header />
+              <SubContainer>
+                <Sidebar />
+                <BannerContentContainer>
+                  {showBanner && <Banner changeShowBanner={changeShowBanner} />}
+                  {this.renderPage()}
+                </BannerContentContainer>
+              </SubContainer>
+            </MainContainer>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
   }
 }
 

@@ -6,7 +6,6 @@ import {BsBrightnessHigh} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FaMoon} from 'react-icons/fa'
-import {CgProfile} from 'react-icons/cg'
 import {AiOutlineClose, AiFillHome} from 'react-icons/ai'
 import {BiListPlus} from 'react-icons/bi'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -32,6 +31,7 @@ import {
   LogoutButtonsContainer,
   LogoutModal,
   LogoutModalHeading,
+  ProfileImg,
 } from './styledComponents'
 
 const Header = props => (
@@ -95,22 +95,38 @@ const Header = props => (
                     <MenuList>
                       <ReactLink
                         to="/"
-                        bgColor={pathname === '/' ? '#f1f1f1' : 'transparent'}
+                        onClick={close}
+                        bgColor={
+                          pathname === '/'
+                            ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                            : 'transparent'
+                        }
                       >
                         <MenuItem>
-                          <AiFillHome color="#ff0000" size="20" />
+                          <AiFillHome
+                            color={pathname === '/' ? '#ff0000' : '#606060'}
+                            size="20"
+                          />
                           <MenuItemHeading theme={isDark}>Home</MenuItemHeading>
                         </MenuItem>
                       </ReactLink>
 
                       <ReactLink
                         to="/trending"
+                        onClick={close}
                         bgColor={
-                          pathname === '/trending' ? '#f1f1f1' : 'transparent'
+                          pathname === '/trending'
+                            ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                            : 'transparent'
                         }
                       >
                         <MenuItem>
-                          <HiFire color="#606060" size="20" />
+                          <HiFire
+                            color={
+                              pathname === '/trending' ? '#ff0000' : '#606060'
+                            }
+                            size="20"
+                          />
                           <MenuItemHeading theme={isDark}>
                             Trending
                           </MenuItemHeading>
@@ -118,13 +134,21 @@ const Header = props => (
                       </ReactLink>
 
                       <ReactLink
+                        onClick={close}
                         to="/gaming"
                         bgColor={
-                          pathname === '/gaming' ? '#f1f1f1' : 'transparent'
+                          pathname === '/gaming'
+                            ? `${isDark === true ? '#313131' : '#f1f1f1'}`
+                            : 'transparent'
                         }
                       >
                         <MenuItem>
-                          <SiYoutubegaming color="#606060" size="20" />
+                          <SiYoutubegaming
+                            color={
+                              pathname === '/gaming' ? '#ff0000' : '#606060'
+                            }
+                            size="20"
+                          />
                           <MenuItemHeading theme={isDark}>
                             Gaming
                           </MenuItemHeading>
@@ -132,21 +156,23 @@ const Header = props => (
                       </ReactLink>
 
                       <ReactLink
+                        onClick={close}
                         to="/savedvideos"
                         bgColor={
                           pathname === '/savedvideos'
-                            ? '#f1f1f1'
+                            ? `${isDark === true ? '#313131' : '#f1f1f1'}`
                             : 'transparent'
                         }
                       >
-                        <MenuItem
-                          bgColor={
-                            pathname === '/savedvideos'
-                              ? '#f1f1f1'
-                              : 'transparent'
-                          }
-                        >
-                          <BiListPlus color="#606060" size="20" />
+                        <MenuItem>
+                          <BiListPlus
+                            color={
+                              pathname === '/savedvideos'
+                                ? '#ff0000'
+                                : '#606060'
+                            }
+                            size="20"
+                          />
                           <MenuItemHeading theme={isDark}>
                             Saved Videos
                           </MenuItemHeading>
@@ -188,7 +214,10 @@ const Header = props => (
                         color="#f1f1f1"
                         bgColor="#3b82f6"
                         type="button"
-                        onClick={logout}
+                        onClick={() => {
+                          close()
+                          logout()
+                        }}
                       >
                         Confirm
                       </CancelButton>
@@ -214,20 +243,54 @@ const Header = props => (
               )}
             </NavItem>
             <NavItem>
-              <CgProfile
-                color={isDark === true ? '#ffffff' : '#000000'}
-                size="27"
+              <ProfileImg
+                alt="profile"
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
               />
             </NavItem>
 
             <NavItem>
-              <LogoutButton
-                color={isDark === true ? '#ffffff' : '#3b82f6'}
-                onClick={logout}
-                type="button"
+              <Popup
+                modal
+                trigger={
+                  <LogoutButton
+                    color={isDark === true ? '#ffffff' : '#3b82f6'}
+                    onClick={logout}
+                    type="button"
+                  >
+                    Logout
+                  </LogoutButton>
+                }
               >
-                Logout
-              </LogoutButton>
+                {close => (
+                  <LogoutModal theme={isDark}>
+                    <LogoutModalHeading theme={isDark}>
+                      Are you sure you want to logout?
+                    </LogoutModalHeading>
+                    <LogoutButtonsContainer>
+                      <CancelButton
+                        color="#64748b"
+                        bgColor="transparent"
+                        type="button"
+                        onClick={close}
+                      >
+                        Cancel
+                      </CancelButton>
+                      <CancelButton
+                        color="#f1f1f1"
+                        bgColor="#3b82f6"
+                        type="button"
+                        onClick={() => {
+                          close()
+                          logout()
+                        }}
+                      >
+                        Confirm
+                      </CancelButton>
+                    </LogoutButtonsContainer>
+                  </LogoutModal>
+                )}
+              </Popup>
             </NavItem>
           </NavbarTabs>
         </Navbar>

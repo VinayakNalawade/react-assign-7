@@ -1,5 +1,21 @@
 import styled from 'styled-components'
 
+export const MainContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+export const SubContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
+export const BannerContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
 export const HomeFailureContainer = styled.div`
   min-height: 100%;
   display: flex;

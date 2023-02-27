@@ -8,7 +8,14 @@ import {formatDistanceToNow} from 'date-fns'
 
 import Cookies from 'js-cookie'
 
+import Header from '../Header'
+import Banner from '../Banner'
+import Sidebar from '../Sidebar'
+
 import {
+  MainContainer,
+  SubContainer,
+  BannerContentContainer,
   HomeFailureContainer,
   FailureImg,
   FailureHeading,
@@ -195,7 +202,26 @@ class Trending extends Component {
   }
 
   render() {
-    return this.renderPage()
+    return (
+      <ThemeContext.Consumer>
+        {value => {
+          const {showBanner, changeShowBanner} = value
+
+          return (
+            <MainContainer>
+              <Header />
+              <SubContainer>
+                <Sidebar />
+                <BannerContentContainer>
+                  {showBanner && <Banner changeShowBanner={changeShowBanner} />}
+                  {this.renderPage()}
+                </BannerContentContainer>
+              </SubContainer>
+            </MainContainer>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
   }
 }
 

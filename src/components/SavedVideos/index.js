@@ -1,6 +1,15 @@
+import {Link} from 'react-router-dom'
 import {HiFire} from 'react-icons/hi'
 
+import Header from '../Header'
+import Banner from '../Banner'
+import Sidebar from '../Sidebar'
+
 import {
+  ReactLink,
+  MainContainer,
+  SubContainer,
+  BannerContentContainer,
   HomeFailureContainer,
   FailureImg,
   FailureHeading,
@@ -25,7 +34,6 @@ import {
 } from './styledComponents'
 
 import ThemeContext from '../context/ThemeContext'
-import VideoDetailsContext from '../context/VideoDetailsContext'
 
 const SavedVideos = () => {
   const renderFailure = () => (
@@ -66,36 +74,40 @@ const SavedVideos = () => {
             </TrendingBanner>
             <TrendingList>
               {videosList.map(each => (
-                <VideoItem key={each.id}>
-                  <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
-                  <VideoItemDetails>
-                    <ChannelImg
-                      src={each.channel.profileImageUrl}
-                      alt="channel logo"
-                    />
-                    <VideoItemDetailsContainer>
-                      <VideoTitle theme={isDark}>{each.title}</VideoTitle>
-                      <ChannelNameLg>{each.channel.name}</ChannelNameLg>
-                      <ViewsDurationContainerLg>
-                        <ChannelViewsLg>{each.viewCount} views</ChannelViewsLg>
-                        <PublishedDuration>
-                          {each.publishedAt.slice(0, 1).toUpperCase()}
-                          {each.publishedAt.slice(1)}
-                        </PublishedDuration>
-                      </ViewsDurationContainerLg>
-                      <VideoItemDetailsSm>
-                        <ChannelNameSm>{each.channel.name}</ChannelNameSm>
-                        <PublishedDuration>
-                          {each.viewCount} views
-                        </PublishedDuration>
-                        <PublishedDuration>
-                          {each.publishedAt.slice(0, 1).toUpperCase()}
-                          {each.publishedAt.slice(1)}
-                        </PublishedDuration>
-                      </VideoItemDetailsSm>
-                    </VideoItemDetailsContainer>
-                  </VideoItemDetails>
-                </VideoItem>
+                <ReactLink to={`videos/${each.id}`} key={each.id}>
+                  <VideoItem>
+                    <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
+                    <VideoItemDetails>
+                      <ChannelImg
+                        src={each.channel.profileImageUrl}
+                        alt="channel logo"
+                      />
+                      <VideoItemDetailsContainer>
+                        <VideoTitle theme={isDark}>{each.title}</VideoTitle>
+                        <ChannelNameLg>{each.channel.name}</ChannelNameLg>
+                        <ViewsDurationContainerLg>
+                          <ChannelViewsLg>
+                            {each.viewCount} views
+                          </ChannelViewsLg>
+                          <PublishedDuration>
+                            {each.publishedAt.slice(0, 1).toUpperCase()}
+                            {each.publishedAt.slice(1)}
+                          </PublishedDuration>
+                        </ViewsDurationContainerLg>
+                        <VideoItemDetailsSm>
+                          <ChannelNameSm>{each.channel.name}</ChannelNameSm>
+                          <PublishedDuration>
+                            {each.viewCount} views
+                          </PublishedDuration>
+                          <PublishedDuration>
+                            {each.publishedAt.slice(0, 1).toUpperCase()}
+                            {each.publishedAt.slice(1)}
+                          </PublishedDuration>
+                        </VideoItemDetailsSm>
+                      </VideoItemDetailsContainer>
+                    </VideoItemDetails>
+                  </VideoItem>
+                </ReactLink>
               ))}
             </TrendingList>
           </TrendingContainer>
@@ -105,17 +117,25 @@ const SavedVideos = () => {
   )
 
   return (
-    <VideoDetailsContext.Consumer>
+    <ThemeContext.Consumer>
       {value => {
-        const {saved} = value
+        const {showBanner, changeShowBanner, saved} = value
 
-        if (saved.length !== 0) {
-          return renderSuccess(saved)
-        }
+        return (
+          <MainContainer>
+            <Header />
+            <SubContainer>
+              <Sidebar />
+              <BannerContentContainer>
+                {showBanner && <Banner changeShowBanner={changeShowBanner} />}
 
-        return renderFailure()
+                {saved.length !== 0 ? renderSuccess(saved) : renderFailure()}
+              </BannerContentContainer>
+            </SubContainer>
+          </MainContainer>
+        )
       }}
-    </VideoDetailsContext.Consumer>
+    </ThemeContext.Consumer>
   )
 }
 
