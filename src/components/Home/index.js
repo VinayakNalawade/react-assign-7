@@ -13,6 +13,7 @@ import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
+  PublishedDurationPara,
   ReactLink,
   MainContainer,
   SubContainer,
@@ -141,7 +142,8 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDark} = value
-          if (videosList.length === 0) {
+
+          if (videosList.videos.length === 0) {
             return (
               <HomeFailureContainer theme={isDark}>
                 <FailureImg
@@ -149,7 +151,7 @@ class Home extends Component {
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
                 />
                 <FailureHeading theme={isDark}>
-                  No search results found.
+                  No search results found
                 </FailureHeading>
                 <FailureMsg>
                   Try different key words or remove search filter
@@ -175,25 +177,43 @@ class Home extends Component {
                       <VideoItemDetailsContainer>
                         <VideoTitle theme={isDark}>{each.title}</VideoTitle>
                         <VideoItemDetailsLg>
-                          <ChannelNameLg>{each.channel.name}</ChannelNameLg>
+                          <ChannelNameLg>
+                            <PublishedDurationPara>
+                              {each.channel.name}
+                            </PublishedDurationPara>
+                          </ChannelNameLg>
                           <ViewsDurationContainerLg>
                             <ChannelViewsLg>
-                              {each.viewCount} views
+                              <PublishedDurationPara>
+                                {each.viewCount}
+                              </PublishedDurationPara>{' '}
+                              views
                             </ChannelViewsLg>
                             <PublishedDuration>
-                              {each.publishedAt.slice(0, 1).toUpperCase()}
-                              {each.publishedAt.slice(1)}
+                              <PublishedDurationPara>
+                                {each.publishedAt.slice(0, 1).toUpperCase()}
+                                {each.publishedAt.slice(1)}
+                              </PublishedDurationPara>
                             </PublishedDuration>
                           </ViewsDurationContainerLg>
                         </VideoItemDetailsLg>
                         <VideoItemDetailsSm>
-                          <ChannelNameSm>{each.channel.name}</ChannelNameSm>
+                          <ChannelNameSm>
+                            <PublishedDurationPara>
+                              {each.channel.name}
+                            </PublishedDurationPara>
+                          </ChannelNameSm>
                           <PublishedDuration>
-                            {each.viewCount} views
+                            <PublishedDurationPara>
+                              {each.viewCount}
+                            </PublishedDurationPara>{' '}
+                            views
                           </PublishedDuration>
                           <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
+                            <PublishedDurationPara>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDurationPara>
                           </PublishedDuration>
                         </VideoItemDetailsSm>
                       </VideoItemDetailsContainer>
@@ -237,7 +257,7 @@ class Home extends Component {
                 <Sidebar />
                 <BannerContentContainer>
                   {showBanner && <Banner changeShowBanner={changeShowBanner} />}
-                  <HomeContainer theme={isDark}>
+                  <HomeContainer data-testid="home" theme={isDark}>
                     <SearchInputContainer>
                       <SearchInput
                         theme={isDark}
@@ -247,6 +267,7 @@ class Home extends Component {
                         placeholder="Search"
                       />
                       <SearchButton
+                        data-testid="searchButton"
                         theme={isDark}
                         type="button"
                         onClick={this.getData}

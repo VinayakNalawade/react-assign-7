@@ -13,12 +13,12 @@ const Banner = props => {
 
   const onClickChange = () => changeShowBanner()
   return (
-    <HomeFailureContainer>
-      <CloseButton type="button" onClick={onClickChange}>
+    <HomeFailureContainer data-testid="banner">
+      <CloseButton data-testid="close" type="button" onClick={onClickChange}>
         <AiOutlineClose color="#000000" size="20" />
       </CloseButton>
       <FailureImg
-        alt="website logo"
+        alt="nxt watch logo"
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
       />
       <FailureMsg>Buy Nxt Watch Premium prepaid plans with UPI</FailureMsg>

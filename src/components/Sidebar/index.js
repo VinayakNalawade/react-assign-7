@@ -76,16 +76,16 @@ const Sidebar = props => (
               </MenuItem>
             </ReactLink>
 
-            <ReactLink to="/savedvideos">
+            <ReactLink to="/saved-videos">
               <MenuItem
                 bgColor={
-                  pathname === '/savedvideos'
+                  pathname === '/saved-videos'
                     ? `${isDark === true ? '#313131' : '#f1f1f1'}`
                     : 'transparent'
                 }
               >
                 <BiListPlus
-                  color={pathname === '/savedvideos' ? '#ff0000' : '#606060'}
+                  color={pathname === '/saved-videos' ? '#ff0000' : '#606060'}
                   size="20"
                 />
                 <MenuItemHeading theme={isDark}>Saved Videos</MenuItemHeading>
@@ -100,7 +100,7 @@ const Sidebar = props => (
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
               />
               <ContactLogo
-                alt="twitter"
+                alt="twitter logo"
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
               />
               <ContactLogo

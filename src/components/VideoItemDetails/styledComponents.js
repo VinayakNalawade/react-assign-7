@@ -55,7 +55,7 @@ export const RetryButton = styled.button`
 `
 
 export const VideoItem = styled.div`
-  background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
+  background-color: ${props => (props.theme === true ? '#0f0f0f' : '#f1f1f1')};
   flex-grow: 1;
   padding-top: 2%;
   @media screen and (min-width: 768px) {
@@ -63,7 +63,7 @@ export const VideoItem = styled.div`
     padding: 2%;
   }
 `
-export const TrendingHeading = styled.h1`
+export const TrendingHeading = styled.p`
   font-size: 24px;
   font-weight: 600;
   margin: 0;
@@ -73,6 +73,7 @@ export const TrendingHeading = styled.h1`
 export const ViewsDurationContainerLg = styled.div`
   display: flex;
 `
+export const PublishedDurationPara = styled.p``
 
 export const ChannelViewsLg = styled.li`
   list-style-type: none;
@@ -106,7 +107,7 @@ export const VideoDetailsItem = styled.div`
 
 export const VideoItemDetailsContainer = styled.div``
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-weight: 600;
   font-size: 18px;
   margin-top: 0;
@@ -157,8 +158,11 @@ export const LikeDislikeSave = styled.div`
   }
 `
 
-export const LikeLabel = styled.label`
+export const LikeButton = styled.button`
   margin-left: 5px;
+  outline: none;
+  border: none;
+  background-color: transparent;
   font-size: 14px;
   font-weight: 500;
   color: ${props => props.color};

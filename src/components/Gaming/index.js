@@ -119,7 +119,7 @@ class Gaming extends Component {
           const {isDark} = value
 
           return (
-            <TrendingContainer theme={isDark}>
+            <TrendingContainer data-testid="gaming" theme={isDark}>
               <TrendingBanner theme={isDark}>
                 <TrendingButton theme={isDark} type="button">
                   <SiYoutubegaming color="#ff0000" size="25" />

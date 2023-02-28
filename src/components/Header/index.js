@@ -14,6 +14,7 @@ import {HiFire} from 'react-icons/hi'
 import ThemeContext from '../context/ThemeContext'
 
 import {
+  ThemeButton,
   ReactLink,
   Navbar,
   NavbarLogo,
@@ -43,7 +44,7 @@ const Header = props => (
         Cookies.remove('jwt_token')
         const {history} = props
 
-        history.replace('/')
+        history.replace('/login')
       }
 
       const {location} = props
@@ -62,18 +63,24 @@ const Header = props => (
             />
           </ReactLogoLink>
           <NavbarIcons>
-            <NavItem onClick={changeTheme}>
-              {isDark === true ? (
-                <BsBrightnessHigh
-                  size="20"
-                  color={isDark === true ? '#ffffff' : '#000000'}
-                />
-              ) : (
-                <FaMoon
-                  size="20"
-                  color={isDark === true ? '#ffffff' : '#000000'}
-                />
-              )}
+            <NavItem>
+              <ThemeButton
+                data-testid="theme"
+                type="button"
+                onClick={changeTheme}
+              >
+                {isDark === true ? (
+                  <BsBrightnessHigh
+                    size="20"
+                    color={isDark === true ? '#ffffff' : '#000000'}
+                  />
+                ) : (
+                  <FaMoon
+                    size="20"
+                    color={isDark === true ? '#ffffff' : '#000000'}
+                  />
+                )}
+              </ThemeButton>
             </NavItem>
             <NavItem>
               <Popup
@@ -157,9 +164,9 @@ const Header = props => (
 
                       <ReactLink
                         onClick={close}
-                        to="/savedvideos"
+                        to="/saved-videos"
                         bgColor={
-                          pathname === '/savedvideos'
+                          pathname === '/saved-videos'
                             ? `${isDark === true ? '#313131' : '#f1f1f1'}`
                             : 'transparent'
                         }
@@ -167,7 +174,7 @@ const Header = props => (
                         <MenuItem>
                           <BiListPlus
                             color={
-                              pathname === '/savedvideos'
+                              pathname === '/saved-videos'
                                 ? '#ff0000'
                                 : '#606060'
                             }
@@ -198,8 +205,8 @@ const Header = props => (
               >
                 {close => (
                   <LogoutModal theme={isDark}>
-                    <LogoutModalHeading theme={isDark}>
-                      Are you sure you want to logout?
+                    <LogoutModalHeading as="p" theme={isDark}>
+                      Are you sure, you want to logout?
                     </LogoutModalHeading>
                     <LogoutButtonsContainer>
                       <CancelButton
@@ -229,18 +236,24 @@ const Header = props => (
           </NavbarIcons>
 
           <NavbarTabs>
-            <NavItem onClick={changeTheme}>
-              {isDark === true ? (
-                <BsBrightnessHigh
-                  color={isDark === true ? '#ffffff' : '#000000'}
-                  size="25"
-                />
-              ) : (
-                <FaMoon
-                  color={isDark === true ? '#ffffff' : '#000000'}
-                  size="25"
-                />
-              )}
+            <NavItem>
+              <ThemeButton
+                data-testid="theme"
+                type="button"
+                onClick={changeTheme}
+              >
+                {isDark === true ? (
+                  <BsBrightnessHigh
+                    color={isDark === true ? '#ffffff' : '#000000'}
+                    size="25"
+                  />
+                ) : (
+                  <FaMoon
+                    color={isDark === true ? '#ffffff' : '#000000'}
+                    size="25"
+                  />
+                )}
+              </ThemeButton>
             </NavItem>
             <NavItem>
               <ProfileImg
@@ -264,8 +277,8 @@ const Header = props => (
               >
                 {close => (
                   <LogoutModal theme={isDark}>
-                    <LogoutModalHeading theme={isDark}>
-                      Are you sure you want to logout?
+                    <LogoutModalHeading as="p" theme={isDark}>
+                      Are you sure, you want to logout?
                     </LogoutModalHeading>
                     <LogoutButtonsContainer>
                       <CancelButton

@@ -68,7 +68,7 @@ export const RetryButton = styled.button`
   margin-top: 30px;
 `
 export const TrendingContainer = styled.div`
-  background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
+  background-color: ${props => (props.theme === true ? '#0f0f0f' : '#f1f1f1')};
   flex-grow: 1;
 `
 export const TrendingBanner = styled.div`
@@ -123,7 +123,9 @@ export const VideoImg = styled.img`
 
 export const VideoItemDetailsContainer = styled.div``
 
-export const VideoTitle = styled.h1`
+export const PublishedDurationPara = styled.p``
+
+export const VideoTitle = styled.p`
   font-weight: 600;
   font-size: 18px;
   margin-top: 0;

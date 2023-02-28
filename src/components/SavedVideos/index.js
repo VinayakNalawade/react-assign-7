@@ -4,6 +4,7 @@ import Header from '../Header'
 import Sidebar from '../Sidebar'
 
 import {
+  PublishedDurationPara,
   ReactLink,
   MainContainer,
   SubContainer,
@@ -48,9 +49,7 @@ const SavedVideos = () => {
             <FailureHeading theme={isDark}>
               No saved videos found
             </FailureHeading>
-            <FailureMsg>
-              You can save your videos while watching them.
-            </FailureMsg>
+            <FailureMsg>Save your videos by clicking a button</FailureMsg>
           </HomeFailureContainer>
         )
       }}
@@ -63,7 +62,7 @@ const SavedVideos = () => {
         const {isDark} = value
 
         return (
-          <TrendingContainer theme={isDark}>
+          <TrendingContainer data-testid="savedVideos" theme={isDark}>
             <TrendingBanner theme={isDark}>
               <TrendingButton theme={isDark} type="button">
                 <HiFire color="#ff0000" size="25" />
@@ -85,21 +84,31 @@ const SavedVideos = () => {
                         <ChannelNameLg>{each.channel.name}</ChannelNameLg>
                         <ViewsDurationContainerLg>
                           <ChannelViewsLg>
-                            {each.viewCount} views
+                            <PublishedDurationPara>
+                              {each.viewCount}
+                            </PublishedDurationPara>{' '}
+                            views
                           </ChannelViewsLg>
                           <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
+                            <PublishedDurationPara>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDurationPara>
                           </PublishedDuration>
                         </ViewsDurationContainerLg>
                         <VideoItemDetailsSm>
                           <ChannelNameSm>{each.channel.name}</ChannelNameSm>
                           <PublishedDuration>
-                            {each.viewCount} views
+                            <PublishedDurationPara>
+                              {each.viewCount}
+                            </PublishedDurationPara>{' '}
+                            views
                           </PublishedDuration>
                           <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
+                            <PublishedDurationPara>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDurationPara>
                           </PublishedDuration>
                         </VideoItemDetailsSm>
                       </VideoItemDetailsContainer>

@@ -16,6 +16,7 @@ import Header from '../Header'
 import Sidebar from '../Sidebar'
 
 import {
+  PublishedDurationPara,
   MainContainer,
   SubContainer,
   BannerContentContainer,
@@ -38,7 +39,7 @@ import {
   ViewsAndLike,
   VideoItemDescription,
   LikeDislikeSave,
-  LikeLabel,
+  LikeButton,
   Like,
 } from './styledComponents'
 
@@ -122,22 +123,22 @@ class VideoItemDetails extends Component {
         return (
           <LikeDislikeSave>
             <Like onClick={changeLikedStatus}>
-              <BiLike color={isLiked ? '#3b82f6' : '#64748b'} />
-              <LikeLabel color={isLiked ? '#3b82f6' : '#64748b'}>
+              <BiLike color={isLiked ? '#2563eb' : '#64748b'} />
+              <LikeButton color={isLiked ? '#2563eb' : '#64748b'}>
                 Like
-              </LikeLabel>
+              </LikeButton>
             </Like>
             <Like onClick={changeDislikedStatus}>
-              <BiDislike color={isDisliked ? '#3b82f6' : '#64748b'} />
-              <LikeLabel color={isDisliked ? '#3b82f6' : '#64748b'}>
+              <BiDislike color={isDisliked ? '#2563eb' : '#64748b'} />
+              <LikeButton color={isDisliked ? '#2563eb' : '#64748b'}>
                 Dislike
-              </LikeLabel>
+              </LikeButton>
             </Like>
             <Like onClick={changeSavedStatus}>
-              <BiListPlus color={isSaved ? '#3b82f6' : '#64748b'} />
-              <LikeLabel color={isSaved ? '#3b82f6' : '#64748b'}>
+              <BiListPlus color={isSaved ? '#2563eb' : '#64748b'} />
+              <LikeButton color={isSaved ? '#2563eb' : '#64748b'}>
                 {isSaved ? 'Saved' : 'Save'}
-              </LikeLabel>
+              </LikeButton>
             </Like>
           </LikeDislikeSave>
         )
@@ -152,7 +153,7 @@ class VideoItemDetails extends Component {
         const {videoDetails} = this.state
 
         return (
-          <VideoItem theme={isDark}>
+          <VideoItem data-testid="videoItemDetails" theme={isDark}>
             <ReactPlayer width="100" url={videoDetails.videoUrl} />
             <VideoDetails>
               <TrendingHeading theme={isDark}>
@@ -161,11 +162,16 @@ class VideoItemDetails extends Component {
               <ViewsAndLike>
                 <ViewsDurationContainerLg>
                   <ChannelViewsLg>
-                    {videoDetails.viewCount} views
+                    <PublishedDurationPara>
+                      {videoDetails.viewCount}
+                    </PublishedDurationPara>{' '}
+                    views
                   </ChannelViewsLg>
                   <PublishedDuration>
-                    {videoDetails.publishedAt.slice(0, 1).toUpperCase()}
-                    {videoDetails.publishedAt.slice(1)}
+                    <PublishedDurationPara>
+                      {videoDetails.publishedAt.slice(0, 1).toUpperCase()}
+                      {videoDetails.publishedAt.slice(1)}
+                    </PublishedDurationPara>
                   </PublishedDuration>
                 </ViewsDurationContainerLg>
                 {this.renderLikeDislikeSave()}
@@ -180,7 +186,10 @@ class VideoItemDetails extends Component {
                     {videoDetails.channel.name}
                   </VideoTitle>
                   <ChannelNameLg>
-                    {videoDetails.channel.subscriberCount} subscribers
+                    <PublishedDurationPara>
+                      {videoDetails.channel.subscriberCount}
+                    </PublishedDurationPara>{' '}
+                    subscribers
                   </ChannelNameLg>
                 </VideoItemDetailsContainer>
               </VideoDetailsItem>
@@ -213,7 +222,7 @@ class VideoItemDetails extends Component {
               Oops! Something Went Wrong
             </FailureHeading>
             <FailureMsg>
-              We are having some trouble completing your request. Please try
+              We are having some trouble to complete your request. Please try
               again.
             </FailureMsg>
             <RetryButton type="button" onClick={this.getData}>

@@ -13,6 +13,7 @@ import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
+  PublishedDurationPara,
   ReactLink,
   MainContainer,
   SubContainer,
@@ -137,7 +138,7 @@ class Trending extends Component {
           const {isDark} = value
 
           return (
-            <TrendingContainer theme={isDark}>
+            <TrendingContainer data-testid="trending" theme={isDark}>
               <TrendingBanner theme={isDark}>
                 <TrendingButton theme={isDark} type="button">
                   <HiFire color="#ff0000" size="25" />
@@ -159,21 +160,31 @@ class Trending extends Component {
                           <ChannelNameLg>{each.channel.name}</ChannelNameLg>
                           <ViewsDurationContainerLg>
                             <ChannelViewsLg>
-                              {each.viewCount} views
+                              <PublishedDurationPara>
+                                {each.viewCount}
+                              </PublishedDurationPara>{' '}
+                              views
                             </ChannelViewsLg>
                             <PublishedDuration>
-                              {each.publishedAt.slice(0, 1).toUpperCase()}
-                              {each.publishedAt.slice(1)}
+                              <PublishedDurationPara>
+                                {each.publishedAt.slice(0, 1).toUpperCase()}
+                                {each.publishedAt.slice(1)}
+                              </PublishedDurationPara>
                             </PublishedDuration>
                           </ViewsDurationContainerLg>
                           <VideoItemDetailsSm>
                             <ChannelNameSm>{each.channel.name}</ChannelNameSm>
                             <PublishedDuration>
-                              {each.viewCount} views
+                              <PublishedDurationPara>
+                                {each.viewCount}
+                              </PublishedDurationPara>{' '}
+                              views
                             </PublishedDuration>
                             <PublishedDuration>
-                              {each.publishedAt.slice(0, 1).toUpperCase()}
-                              {each.publishedAt.slice(1)}
+                              <PublishedDurationPara>
+                                {each.publishedAt.slice(0, 1).toUpperCase()}
+                                {each.publishedAt.slice(1)}
+                              </PublishedDurationPara>
                             </PublishedDuration>
                           </VideoItemDetailsSm>
                         </VideoItemDetailsContainer>

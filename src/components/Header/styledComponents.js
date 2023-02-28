@@ -2,6 +2,12 @@ import {Link} from 'react-router-dom'
 
 import styled from 'styled-components'
 
+export const ThemeButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: transparent;
+`
+
 export const ProfileImg = styled.img`
   width: 27px;
 `

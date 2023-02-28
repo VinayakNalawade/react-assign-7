@@ -38,7 +38,7 @@ export const SidebarContainer = styled.div`
 
 export const ContactIcons = styled.div``
 
-export const ContactTitle = styled.h1`
+export const ContactTitle = styled.p`
   font-weight: 700;
   font-size: 16px;
   margin-top: 0;

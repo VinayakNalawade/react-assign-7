@@ -142,7 +142,7 @@ export const VideoItemDetailsLg = styled.div`
   }
 `
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-weight: 600;
   font-size: 16px;
   margin-top: 0;
@@ -192,6 +192,7 @@ export const PublishedDuration = styled.li`
     font-size: 12px;
   }
 `
+export const PublishedDurationPara = styled.p``
 
 export const VideoItemDetailsSm = styled.ul`
   padding: 0;

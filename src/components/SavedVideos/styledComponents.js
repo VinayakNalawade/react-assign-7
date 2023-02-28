@@ -56,7 +56,7 @@ export const FailureMsg = styled.p`
 `
 
 export const TrendingContainer = styled.div`
-  background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
+  background-color: ${props => (props.theme === true ? '#0f0f0f' : '#f1f1f1')};
   flex-grow: 1;
 `
 export const TrendingBanner = styled.div`
@@ -89,8 +89,7 @@ export const TrendingList = styled.ul`
   flex-direction: column;
   align-items: center;
 `
-
-export const VideoItem = styled.div`
+export const VideoItem = styled.li`
   list-style-type: none;
   width: 100%;
   margin-top: 2%;
@@ -108,7 +107,7 @@ export const VideoImg = styled.img`
 
 export const VideoItemDetailsContainer = styled.div``
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-weight: 600;
   font-size: 18px;
   margin-top: 0;
@@ -131,21 +130,21 @@ export const ChannelNameLg = styled.p`
   }
 `
 
-export const ChannelViewsLg = styled.li`
-  list-style-type: none;
+export const ChannelViewsLg = styled.div`
   margin-right: 25px;
   font-size: 12px;
   color: #64748b;
   font-weight: 600;
 `
 
-export const ChannelNameSm = styled.li`
+export const ChannelNameSm = styled.p`
   font-size: 12px;
   font-weight: 600;
-  list-style-type: none;
   margin-right: 25px;
   color: #64748b;
 `
+
+export const PublishedDurationPara = styled.p``
 
 export const PublishedDuration = styled.li`
   list-style-type: disc;
