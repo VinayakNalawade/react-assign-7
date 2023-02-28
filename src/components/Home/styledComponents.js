@@ -7,9 +7,16 @@ export const ReactLink = styled(Link)`
   background-color: ${props => props.bgColor};
   border: none;
   outline: none;
-  width: 100%;
+  width: 100vw;
+
   @media screen and (min-width: 576px) {
-    width: 85%;
+    width: 48%;
+    margin: 1%;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 31%;
+    margin: 1%;
   }
 `
 export const MainContainer = styled.div`
@@ -33,7 +40,7 @@ export const HomeContainer = styled.div`
   background-color: ${props => (props.theme === true ? '#181818' : '#f1f1f1')};
   padding-top: 1px;
   flex-grow: 1;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 576px) {
     padding-top: 0;
     padding: 5%;
   }
@@ -118,12 +125,7 @@ export const HomeVideosList = styled.ul`
 
 export const VideoItem = styled.div`
   list-style-type: none;
-  width: 100vw;
-
-  @media screen and (min-width: 768px) {
-    width: 31%;
-    margin: 1%;
-  }
+  width: 100%;
 `
 
 export const ChannelImg = styled.img`

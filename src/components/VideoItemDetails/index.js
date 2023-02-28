@@ -11,10 +11,8 @@ import Cookies from 'js-cookie'
 import {formatDistanceToNow} from 'date-fns'
 
 import ThemeContext from '../context/ThemeContext'
-import VideoDetailsContext from '../context/VideoDetailsContext'
 
 import Header from '../Header'
-import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
@@ -63,14 +61,11 @@ class VideoItemDetails extends Component {
       },
     }
 
-    // const {match} = this.props
-    // const {params} = match
-    // const {id} = params
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
 
-    const response = await fetch(
-      `https://apis.ccbp.in/videos/30b642bd-7591-49f4-ac30-5c538f975b15`,
-      options,
-    )
+    const response = await fetch(`https://apis.ccbp.in/videos/${id}`, options)
     const data = await response.json()
 
     if (response.ok) {
@@ -101,7 +96,7 @@ class VideoItemDetails extends Component {
   }
 
   renderLikeDislikeSave = () => (
-    <VideoDetailsContext.Consumer>
+    <ThemeContext.Consumer>
       {value => {
         const {
           liked,
@@ -114,25 +109,31 @@ class VideoItemDetails extends Component {
 
         const {videoDetails} = this.state
         const {id} = videoDetails
-        const isLiked = liked.some(each => each.id === id)
-        const isDisliked = disliked.some(each => each.id === id)
+        const isLiked = liked.includes(id)
+        const isDisliked = disliked.includes(id)
         const isSaved = saved.some(each => each.id === id)
+
+        const changeLikedStatus = () => changeLiked(id)
+
+        const changeDislikedStatus = () => changeDisliked(id)
+
+        const changeSavedStatus = () => changeSaved(videoDetails)
 
         return (
           <LikeDislikeSave>
-            <Like>
+            <Like onClick={changeLikedStatus}>
               <BiLike color={isLiked ? '#3b82f6' : '#64748b'} />
               <LikeLabel color={isLiked ? '#3b82f6' : '#64748b'}>
                 Like
               </LikeLabel>
             </Like>
-            <Like>
+            <Like onClick={changeDislikedStatus}>
               <BiDislike color={isDisliked ? '#3b82f6' : '#64748b'} />
               <LikeLabel color={isDisliked ? '#3b82f6' : '#64748b'}>
                 Dislike
               </LikeLabel>
             </Like>
-            <Like>
+            <Like onClick={changeSavedStatus}>
               <BiListPlus color={isSaved ? '#3b82f6' : '#64748b'} />
               <LikeLabel color={isSaved ? '#3b82f6' : '#64748b'}>
                 {isSaved ? 'Saved' : 'Save'}
@@ -141,7 +142,7 @@ class VideoItemDetails extends Component {
           </LikeDislikeSave>
         )
       }}
-    </VideoDetailsContext.Consumer>
+    </ThemeContext.Consumer>
   )
 
   renderSuccess = () => (
@@ -247,24 +248,13 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <ThemeContext.Consumer>
-        {value => {
-          const {showBanner, changeShowBanner} = value
-
-          return (
-            <MainContainer>
-              <Header />
-              <SubContainer>
-                <Sidebar />
-                <BannerContentContainer>
-                  {showBanner && <Banner changeShowBanner={changeShowBanner} />}
-                  {this.renderPage()}
-                </BannerContentContainer>
-              </SubContainer>
-            </MainContainer>
-          )
-        }}
-      </ThemeContext.Consumer>
+      <MainContainer>
+        <Header />
+        <SubContainer>
+          <Sidebar />
+          <BannerContentContainer>{this.renderPage()}</BannerContentContainer>
+        </SubContainer>
+      </MainContainer>
     )
   }
 }

@@ -1,4 +1,19 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
+
+export const ReactLink = styled(Link)`
+  text-decoration: none;
+  background-color: ${props => props.bgColor};
+  border: none;
+  outline: none;
+  min-width: 100%;
+  margin-top: 2%;
+  @media screen and (min-width: 576px) {
+    display: flex;
+    width: 85%;
+  }
+`
 
 export const MainContainer = styled.div`
   min-height: 100vh;
@@ -85,15 +100,17 @@ export const TrendingList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (min-width: 576px) {
+    padding: 3%;
+    padding-top: 0;
+  }
 `
 
 export const VideoItem = styled.div`
   list-style-type: none;
   width: 100%;
-  margin-top: 2%;
   @media screen and (min-width: 576px) {
     display: flex;
-    width: 85%;
   }
 `
 

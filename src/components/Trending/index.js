@@ -13,6 +13,7 @@ import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
+  ReactLink,
   MainContainer,
   SubContainer,
   BannerContentContainer,
@@ -145,38 +146,40 @@ class Trending extends Component {
               </TrendingBanner>
               <TrendingList>
                 {videosList.videos.map(each => (
-                  <VideoItem key={each.id}>
-                    <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
-                    <VideoItemDetails>
-                      <ChannelImg
-                        src={each.channel.profileImageUrl}
-                        alt="channel logo"
-                      />
-                      <VideoItemDetailsContainer>
-                        <VideoTitle theme={isDark}>{each.title}</VideoTitle>
-                        <ChannelNameLg>{each.channel.name}</ChannelNameLg>
-                        <ViewsDurationContainerLg>
-                          <ChannelViewsLg>
-                            {each.viewCount} views
-                          </ChannelViewsLg>
-                          <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
-                          </PublishedDuration>
-                        </ViewsDurationContainerLg>
-                        <VideoItemDetailsSm>
-                          <ChannelNameSm>{each.channel.name}</ChannelNameSm>
-                          <PublishedDuration>
-                            {each.viewCount} views
-                          </PublishedDuration>
-                          <PublishedDuration>
-                            {each.publishedAt.slice(0, 1).toUpperCase()}
-                            {each.publishedAt.slice(1)}
-                          </PublishedDuration>
-                        </VideoItemDetailsSm>
-                      </VideoItemDetailsContainer>
-                    </VideoItemDetails>
-                  </VideoItem>
+                  <ReactLink to={`videos/${each.id}`} key={each.id}>
+                    <VideoItem key={each.id}>
+                      <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
+                      <VideoItemDetails>
+                        <ChannelImg
+                          src={each.channel.profileImageUrl}
+                          alt="channel logo"
+                        />
+                        <VideoItemDetailsContainer>
+                          <VideoTitle theme={isDark}>{each.title}</VideoTitle>
+                          <ChannelNameLg>{each.channel.name}</ChannelNameLg>
+                          <ViewsDurationContainerLg>
+                            <ChannelViewsLg>
+                              {each.viewCount} views
+                            </ChannelViewsLg>
+                            <PublishedDuration>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDuration>
+                          </ViewsDurationContainerLg>
+                          <VideoItemDetailsSm>
+                            <ChannelNameSm>{each.channel.name}</ChannelNameSm>
+                            <PublishedDuration>
+                              {each.viewCount} views
+                            </PublishedDuration>
+                            <PublishedDuration>
+                              {each.publishedAt.slice(0, 1).toUpperCase()}
+                              {each.publishedAt.slice(1)}
+                            </PublishedDuration>
+                          </VideoItemDetailsSm>
+                        </VideoItemDetailsContainer>
+                      </VideoItemDetails>
+                    </VideoItem>
+                  </ReactLink>
                 ))}
               </TrendingList>
             </TrendingContainer>

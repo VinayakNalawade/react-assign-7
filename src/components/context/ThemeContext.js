@@ -6,7 +6,7 @@ const ThemeContext = React.createContext({
   showBanner: '',
   changeShowBanner: () => {},
   liked: [],
-  disliked: [],
+  disLiked: [],
   saved: [
     {
       channel: {

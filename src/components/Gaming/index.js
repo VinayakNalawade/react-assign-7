@@ -11,6 +11,7 @@ import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
+  ReactLink,
   MainContainer,
   SubContainer,
   BannerContentContainer,
@@ -127,13 +128,15 @@ class Gaming extends Component {
               </TrendingBanner>
               <TrendingList>
                 {videosList.videos.map(each => (
-                  <VideoItem key={each.id}>
-                    <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
-                    <VideoTitle theme={isDark}>{each.title}</VideoTitle>
-                    <GamingViews>
-                      {each.viewCount} Watching Worldwide
-                    </GamingViews>
-                  </VideoItem>
+                  <ReactLink to={`videos/${each.id}`} key={each.id}>
+                    <VideoItem key={each.id}>
+                      <VideoImg src={each.thumbnailUrl} alt="video thumbnail" />
+                      <VideoTitle theme={isDark}>{each.title}</VideoTitle>
+                      <GamingViews>
+                        {each.viewCount} Watching Worldwide
+                      </GamingViews>
+                    </VideoItem>
+                  </ReactLink>
                 ))}
               </TrendingList>
             </TrendingContainer>

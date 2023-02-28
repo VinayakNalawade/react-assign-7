@@ -1,8 +1,6 @@
-import {Link} from 'react-router-dom'
 import {HiFire} from 'react-icons/hi'
 
 import Header from '../Header'
-import Banner from '../Banner'
 import Sidebar from '../Sidebar'
 
 import {
@@ -119,7 +117,7 @@ const SavedVideos = () => {
   return (
     <ThemeContext.Consumer>
       {value => {
-        const {showBanner, changeShowBanner, saved} = value
+        const {saved} = value
 
         return (
           <MainContainer>
@@ -127,8 +125,6 @@ const SavedVideos = () => {
             <SubContainer>
               <Sidebar />
               <BannerContentContainer>
-                {showBanner && <Banner changeShowBanner={changeShowBanner} />}
-
                 {saved.length !== 0 ? renderSuccess(saved) : renderFailure()}
               </BannerContentContainer>
             </SubContainer>
