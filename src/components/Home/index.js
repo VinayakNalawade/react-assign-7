@@ -177,11 +177,7 @@ class Home extends Component {
                       <VideoItemDetailsContainer>
                         <VideoTitle theme={isDark}>{each.title}</VideoTitle>
                         <VideoItemDetailsLg>
-                          <ChannelNameLg>
-                            <PublishedDurationPara>
-                              {each.channel.name}
-                            </PublishedDurationPara>
-                          </ChannelNameLg>
+                          <ChannelNameLg>{each.channel.name}</ChannelNameLg>
                           <ViewsDurationContainerLg>
                             <ChannelViewsLg>
                               <PublishedDurationPara>
