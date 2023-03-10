@@ -109,6 +109,12 @@ export const MenuList = styled.ul`
   align-self: center;
   padding-bottom: 15px;
 `
+export const MenuButton = styled.button`
+  outline: none;
+  border: none;
+  background: transparent;
+`
+
 export const MenuItem = styled.li`
   list-style-type: none;
   display: flex;

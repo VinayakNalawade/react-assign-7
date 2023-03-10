@@ -24,6 +24,7 @@ import {
   NavbarTabs,
   NavItem,
   MenuModalContainer,
+  MenuButton,
   MenuList,
   MenuItem,
   MenuItemHeading,
@@ -86,10 +87,12 @@ const Header = props => (
               <Popup
                 modal
                 trigger={
-                  <GiHamburgerMenu
-                    size="20"
-                    color={isDark === true ? '#ffffff' : '#000000'}
-                  />
+                  <MenuButton type="button">
+                    <GiHamburgerMenu
+                      size="20"
+                      color={isDark === true ? '#ffffff' : '#000000'}
+                    />
+                  </MenuButton>
                 }
               >
                 {close => (
